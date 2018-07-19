@@ -1,0 +1,13 @@
+---
+- name: Setup new account via AWS orgs (PAYER)
+  hosts: localhost
+# Initial taks to setup account, profile and trust
+  pre_tasks:
+   - name: Executing account creation script
+     register: output-acc-creation
+     command: "sh aws_org_create.sh -h] --account_name {{accname}}
+                                      --account_email {{accemail}}
+                                      --cl_profile_name {{accprofile}}
+                                      --ou_name {{ouname}}
+                                      --role_name {{rolename}}
+                                      --region {{region}}"
